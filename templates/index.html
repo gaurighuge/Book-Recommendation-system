@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;  /* Light gray background */
+            color: #333;            /* Darker text for better readability */
+            font-family: Arial, sans-serif; /* Standardizing font */
+        }
+        .navbar-custom {
+            background-color: #333; /* Dark background for navbar */
+            border: none;
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav > li > a {
+            color: #fff;            /* White text for contrast */
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .card {
+            margin-top: 20px;
+            background-color: #fff;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            width: 23%; /* Adjust based on preference */
+            margin: 0.5%;
+        }
+        .card img {
+            width: 100%;
+            height: 200px; /* Fixed image height */
+            object-fit: cover; /* Ensures the image covers the card top */
+        }
+        .card-body {
+            padding: 15px;
+            flex-grow: 1; /* Makes the card body expand to fill remaining space */
+            display: flex;
+            flex-direction: column;
+        }
+        .card-title {
+            margin-bottom: 10px;
+        }
+        .card-text:last-child {
+            margin-top: auto; /* Pushes the last text to the bottom */
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Book Recommender</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/recommend">Recommend</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center" style="margin-top: 20px;">Top 50 Books</h1>
+        <div class="cards-container">
+            {% for i in range(book_name|length) %}
+                <div class="card">
+                    <img class="card-img-top" src="{{ image[i] }}" alt="Book Cover">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ book_name[i] }}</h4>
+                        <p class="card-text">{{ author[i] }}</p>
+                        <p class="card-text">Votes: {{ votes[i] }}</p>
+                        <p class="card-text">Rating: {{ rating[i] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Book Recommender System</p>
+    </footer>
+
+    <!-- jQuery and Bootstrap JavaScript links, for dropdowns and responsive features -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

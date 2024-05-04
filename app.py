@@ -49,6 +49,6 @@ def recommend():
         error_message = f"No recommendations found for '{user_input}'. Please try a different title."
         return render_template('recommend.html', error_message=error_message)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
 
